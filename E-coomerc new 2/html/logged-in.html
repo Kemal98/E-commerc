@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js " integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/logged-in.css">
+</head>
+<body>
+    <!-- no Products ADD -->
+    <div  class="w3-container w3-center w3-animate-top" id="noProducts">
+        <!-- <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> -->
+      <p style="font-size: 1.4rem ; text-align: center; padding: 4px;">You have no items in your shopping cart</p>
+      </div>
+    
+    <!-- Modal pop up -->
+  <div  class="w3-container w3-center w3-animate-top" id="aler">
+    <!-- <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> -->
+  <p style="font-size: 1.4rem ; text-align: center; padding: 13px;">Product added to cart </p>
+  </div>
+
+  <div class="w3-container w3-center w3-animate-top" id="quantityValue">
+    <!-- <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> -->
+    <p style="font-size: 1.4rem ; text-align: center; padding: 5px;">You did not add a quantity</p>
+    <!-- <div>
+        <video style="width: 200px;" src="AddItem.mp4"></video>
+    </div> -->
+  </div>
+  
+
+<!-- header section starts  -->
+<header class="header">
+  <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Elite Furniture </a>
+  <nav class="navbar">
+      <a href="#home">home</a>
+      <!-- karakteristike -->
+      <a href="#features">My account</a> 
+      <!-- proizvod -->
+      <a href="#products">Products</a>
+      <!-- Promotions -->
+      <a href="#review">Promotions</a>
+  </nav>
+
+  <div class="icons">
+      <div class="fas fa-bars" id="menu-btn"></div>
+      <div class="fas fa-shopping-cart" id="cart-btn"></div>
+      <div class="fas fa-user" id="login-btn"></div>
+      <div id="signOutLink" class="fas fa-sign-out-alt"></div>
+  </div>
+</header>
+
+  </div>
+  <!--/.Carousel Wrapper-->
+ <h2 style="text-align:center; padding-top: 3rem;" id="name"></h2>
+ <!-- Shopping Cart -->
+ <div id="shopping-cart" class="container" style="padding:0 3rem 3rem 3rem;">
+  <h1 class="text-center my-5">Checkout</h1>
+  <div class="tab-content">
+      <div class="tab-pane active" id="step1">
+          <div class="row text-center">
+              <div class="col-sm col-12">
+                  <div class="alert alert-primary bg-alert-bg" role="alert">
+                      1 . Please enter your order information
+                  </div>
+              </div>
+              <div class="col-sm col-12">
+                  <div class="alert alert-secondary" role="alert">
+                      2 . Cash Payment
+                  </div>
+              </div>
+              <div class="col-sm col-12">
+                  <div class="alert alert-secondary" role="alert">
+                      3 . Complete
+                  </div>
+              </div>
+          </div>
+          <div class="carte container">
+              <div class="row justify-content-center">
+                  <div class="col-md-12">
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="accordion" id="accordionExample">
+                                  <div class="card_ border-0">
+                                      <div class="card-header d-flex justify-content-between" id="headingOne">
+                                          <h2 class="mb-0">
+                                              <button id="turnbf" class="btn btn-link d-flex turnaf clps" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                  <p class="clps-btn-style">Show the cart detail</p>
+                                                  <span class="mx-1"><i class="far fa-chevron-double-down"></i></span>
+                                              </button>
+                                          </h2>
+                                          <!-- <p>Mony: <span style="font-size: 2rem;" id="Totale"></span></p> -->
+                                          <span id="totale" class="my-2 text-danger h4"></span>
+                                      </div>
+                                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                          <div class="card-body p-0">
+                                              <div>
+                                                  <table class="table table-sm">
+                                                      <thead>
+                                                          <tr class="ml-3">
+                                                              <th class="text-left">Img</th>
+                                                              <th class="text-center">Name</th>
+                                                              <th class="text-center" width="50%">Details product</th>
+                                                              <th class="text-center" width="45%">Price</th>
+                                                              <th>Quantity</th>
+                                                              <th>Remove</th>
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody class="table-body">
+                                                          
+                                                      </tbody>
+                                                  </table>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="alert alert-secondary border-0 h4 text-center bg-alert rounded-0" role="alert">
+                                          Orderer information
+                                      </div>
+                                      <div class="list-group mt-5 p-0 justify-content-center" id="allList" role="tablist" style="flex-direction: row;">
+                                          <a id="stepe" href="#step2"  class="list-group-item-dark w-35 py-2  rounded text-center btns" data-toggle="list" role="tab">
+                                              Next <i class="fal fa-arrow-circle-right"></i>
+                                          </a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="tab-pane" id="step2">
+          <div class="row text-center">
+              <div class="col-sm col-12">
+                  <div class="alert alert-secondary" role="alert">
+                      1 . Please enter your order information
+                  </div>
+              </div>
+              <div class="col-sm col-12">
+                  <div class="alert alert-primary bg-alert-bg" id="appear-1" role="alert">
+                      2 . Cash Payment
+                  </div>
+              </div>
+              <div class="col-sm col-12">
+                  <div class="alert alert-secondary" role="alert">
+                      3 . Complete
+                  </div>
+              </div>
+              <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-md-8">
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="card my-5 text-center border-0">
+                                      <div class="card-header bg-transparent" id="card">
+                                          <ul class="nav nav-tabs card-header-tabs">
+                                              <li class="nav-item">
+                                                  <a class="nav-link active" href="#act1" data-toggle="tab" role="tab">
+                                                      <p class="card-bg h6">Creadit card</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a class="nav-link" href="#act2" data-toggle="tab" role="tab">
+                                                      <p class="card-bg h6">Phone pay</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a class="nav-link" href="#act3" data-toggle="tab" role="tab">
+                                                      <p class="card-bg h6">ATM</p>
+                                                  </a>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                      <div class="tab-content">
+                                          <div class="tab-pane active" id="act1">
+                                              <div id="cardBody" class="card-body border border-top-0 rounded-bottom">
+                                                  <div class="d-sm-flex justify-content-around">
+                                                      <i id="fabIcons" class="fab fa-cc-visa fa-7x icons"></i>
+                                                      <i id="fabIcons" class="fab fa-cc-mastercard fa-7x icons"></i>
+                                                      <i id="fabIcons" class="fab fa-cc-paypal fa-7x icons"></i>
+                                                      <i id="fabIcons" class="fab fa-cc-jcb fa-7x icons"></i>
+                                                  </div>
+                                                  <h5 id="cardTitle" class="card-title mt-2">Choose your card type</h5>
+                                                  <p class="card-text text-danger">If you can't use please contact bank blong to your creadit card thank you</p>
+                                              </div>
+                                          </div>
+                                          <div class="tab-pane" id="act2">
+                                              <div class="card-body border border-top-0 rounded-bottom">
+                                                  <form action="" class="d-sm-flex justify-content-around">
+                                                      <label class="btn btn-dark d-block d-flex justify-content-center">
+                                                      <input type="radio" name="options" id="option3" class="mrg-ct mr-2">
+                                                      <p class="int-chagne">Taiwan Mobile</p>
+                                                      </label>
+                                                      <label class="btn btn-dark d-block d-flex justify-content-center">
+                                                      <input type="radio" name="options" id="option3" class="mrg-ct mr-2">
+                                                      <p class="int-chagne">Chunghwa Tele</p>
+                                                      </label>
+                                                      <label class="btn btn-dark d-block d-flex justify-content-center">
+                                                      <input type="radio" name="options" id="option3" class="mrg-ct mr-2">
+                                                      <p class="int-chagne">Asia Pacific Tele</p>
+                                                      </label>
+                                                      <label class="btn btn-dark d-block d-flex justify-content-center">
+                                                      <input type="radio" name="options" id="option3" class="mrg-ct mr-2">
+                                                      <p class="int-chagne">Local Calls</p>
+                                                      </label>
+                                                  </form>
+                                                  <h5 class="card-title mt-3">Choose you phone tele</h5>
+                                                  <p class="card-text text-danger">If you can't use please contact belong to your telecompany thank you</p>
+                                              </div>
+                                          </div>
+                                          <div class="tab-pane" id="act3">
+                                              <div class="card-body border border-top-0 rounded-bottom">
+                                                  <h5 class="card-title">Please transfer cash to the below account</h5>
+                                                  <span class="d-block my-2">Seller's bank account number</span>
+                                                  <span class="d-block text-danger font-weight-bold my-2">123-XXXXXXXXXXXXXXXX</span>
+                                                  <p class="card-text">We will tell to seller your transfer account message<br>Then please him shipping for you</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="list-group my-5 p-0 justify-content-center" id="allList" role="tablist" style="flex-direction: row;">
+                              <a href="#step1" class="list-group-item-dark mr-3 w-35 px-0 py-2 rounded text-center btns" data-toggle="list" role="tab">
+                                  <i class="fal fa-arrow-circle-left"></i> Previous
+                              </a>
+                              <a href="#step3" id="nextStep"class="list-group-item-dark ml-3 w-35 px-0 py-2  rounded text-center btns" data-toggle="list" role="tab">
+                                  Next <i class="fal fa-arrow-circle-right"></i>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="tab-pane" id="step3">
+          <div class="row text-center">
+              <div class="col-sm col-12">
+                  <div class="alert alert-secondary" role="alert">
+                      1 . Please enter your order information
+                  </div>
+              </div>
+              <div class="col-sm col-12">
+                  <div class="alert alert-secondary" role="alert">
+                      2 . Cash Payment
+                  </div>
+              </div>
+              <div class="col-sm col-12">
+                  <div class="alert alert-success bg-alert-bg" role="alert">
+                      3 . Complete
+                  </div>
+              </div>
+          </div>
+          <div class="container">
+              <div class="row justify-content-center">
+                  <div class="col-md-8">
+                      <div class="row">
+                          <div class="col-md-12">
+                              <h2 class="text-center my-3">Bought information</h2>
+                              <div>
+                                  <table id="table" class="table table-sm">
+                                      <thead>
+                                          <tr class="ml-3">
+                                              <th></th>
+                                              <th class="text-left" width="50%">Product</th>
+                                              <th class="text-center" width="45%">Price</th>
+                                              <th>Quantity</th>
+                                             
+                                          </tr>
+                                      </thead>
+                                      <tbody class="table-complet">
+                                         
+                                      </tbody>
+                                  </table>
+                              </div>
+                              <h2 class="text-center my-3">Profile</h2>
+                              <div class="">
+                                  <table class="table table-sm">
+                                      <tbody>
+                                          <tr>
+                                              <td width="35%" class="align-middle text-left">Last Name</td>
+                                              <td class="text-left" id="LastName"></td>
+                                          </tr>
+                                          <tr>
+                                              <td class="align-middle text-left">Telephone</td>
+                                              <td id="telephone" class="align-middle text-left"></td>
+                                          </tr>
+                                          <tr>
+                                              <td class="align-middle text-left">Email</td>
+                                              <td id="emailValue" class="align-middle text-left"></td>
+                                          </tr>
+                                          <tr>
+                                              <td class="align-middle text-left">Address</td>
+                                              <td id="address" class="align-middle text-left"></td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                      <h2 style="text-align:center; font-size: 1.6rem;padding: 10px;">The total price of the products is <span id="price_products"></span> do you want to confirm the order?</h2>
+                      <div class="list-group mt-5 p-0 mb-3 justify-content-center" id="allList" role="tablist" style="flex-direction: row;">
+                         <!-- <button id="send_oreder" class="btne w-40 btn-outline-primary mb-2">Send-order</button> -->
+                         <div class="buttons-preview">
+                            <button id="sub_btn" data-toggle="modal" data-target="#modal-success">Buy a product</button>
+                         </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Popup send oreder -->
+
+
+ <!--Success Modal Templates-->
+ <div id="modal-success" class="modal modal-message modal-success fade" style="display: none; padding-top: 25rem;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="glyphicon glyphicon-check"></i>
+            </div>
+            <div class="modal-title" style="font: size 1.9em;"> Order saved</div>
+            <div class="modal-body" style="font-size:1.3rem ;">You have successfully placed your order!</div>
+            <div  class="modal-footer" style="justify-content: center;" >
+                <button id="orderFinish" type="button" style="text-align:center; " class="btne btn-success" data-dismiss="modal">OK</button>
+            </div>
+        </div> <!-- / .modal-content -->
+        
+    </div> <!-- / .modal-dialog -->
+</div>
+
+  <!--Main layout-->
+  <main class="card-shopping" >
+    <div class="container" >
+     <div>
+     
+     </div>
+      <!--Navbar-->
+       <!--Navbar-->
+       <nav id="navbar-cat" class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" style="margin-bottom: -3rem!important;; 
+       font-size: 1.8rem; border-bottom:solid 1px rgba(0, 0, 0, 0.625); padding-left: 15rem; ">
+       
+         <!-- Navbar brand -->
+         <span>Categories</span>
+       
+         <div class="collapse navbar-collapse" id="basicExampleNav" style=" justify-content: space-around;">
+            <!-- Links -->
+       <!--Navbar-->
+       <div class="filter">
+         <a href="#" id="nav_filer" class="btn_ active" data-filter="all">All</a>
+         <a href="#" id="nav_filer"  class="btn_" data-filter="elegance">Elegance</a>
+         <a href="#" id="nav_filer" class="btn_" data-filter="skin">Skin</a>
+         <a href="#" id="nav_filer"class="btn_" data-filter="details">Details</a>
+     </div>
+       </div>
+           <form style="padding-right: 4rem;" class="form-inline">
+             <div class="input-group">
+                <div class="searchbar">
+                    <input id="search" class="search_input" type="text" name="" placeholder="Search...">
+                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                  </div>
+               </div>
+       </div>
+            </form>
+         <!-- Collapsible content -->
+ 
+       </nav>
+      <!--/.Navbar-->
+
+      <div class="container d-flex justify-content-center mt-50 mb-50">
+        <div  class="row">
+
+            <div class="col-md-4 mt-2">
+                <div class="card details">
+                 <div class="card-body">
+                  <div class="card-img-actions">
+                   <img src="../images/product-8.jpg" class="card-img img-fluid" width="96" height="350" alt="">                                         
+                 </div>
+                </div>
+                 <div class="card-body bg-light text-center">
+                  <div class="mb-2">                    
+                   <a href="#" class="text-muted" data-abc="true">PAVILION SPEAKER</a>
+                 </div>
+                   <h3 class="price mb-0 font-weight-semibold">900<span>$</span></h3>
+                  <div>
+                      <i class="fa fa-star star"></i>
+                      <i class="fa fa-star star"></i>
+                      <i class="fa fa-star star"></i>
+                      <i class="fa fa-star star"></i>
+                 </div>
+                   
+                      <input type="number" class="quantity" value="0" min="0">
+                  <div class="cart-button">
+                     <button onclick ="addToCard(this)" class="cart">
+                       <span>Add to Cart </span>
+                         <i class="fa fa-shopping-basket" aria-hidden="true" ></i>
+                     </button>
+                  </div>
+                 </div>
+                </div>       
+               </div>
+               <div class="col-md-4 mt-2">
+                 <div class="card details">
+                  <div class="card-body">
+                   <div class="card-img-actions">
+                    <img src="../images/product-7.jpg" class="card-img img-fluid" width="96" height="350" alt="">                                         
+                  </div>
+                 </div>
+                  <div class="card-body bg-light text-center">
+                   <div class="mb-2">                    
+                    <a href="#" class="text-muted" data-abc="true">ALATO CABINET</a>
+                  </div>
+                    <h3 class="price mb-0 font-weight-semibold">1320<span>$</span></h3>
+                   <div>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                  </div>
+                  <input type="number" class="quantity" value="0" min="0">
+                   <div class="cart-button">
+                      <button onclick ="addToCard(this)" class="cart">
+                        <span>Add to Cart </span>
+                          <i class="fa fa-shopping-basket" aria-hidden="true" ></i>
+                      </button>
+                   </div>
+                  </div>
+                 </div>       
+                </div>
+                <div class="col-md-4 mt-2">
+                 <div class="card details">
+                  <div class="card-body">
+                   <div class="card-img-actions">
+                    <img src="../images/product-6.jpg" class="card-img img-fluid" width="96" height="350" alt="">                                         
+                  </div>
+                 </div>
+                  <div class="card-body bg-light text-center">
+                   <div class="mb-2">                    
+                    <a href="#" class="text-muted" data-abc="true">SCULPTURAL</a>
+                  </div>
+                    <h3 class="price mb-0 font-weight-semibold">1500<span>$</span></h3>
+                   <div>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                  </div>
+                  <input type="number" class="quantity" value="0" min="0">
+                   <div class="cart-button">
+                      <button onclick ="addToCard(this)" class="cart">
+                        <span>Add to Cart </span>
+                          <i class="fa fa-shopping-basket" aria-hidden="true" ></i>
+                      </button>
+                   </div>
+                  </div>
+                 </div>       
+                </div>
+                <div class="col-md-4 mt-2">
+                 <div class="card elegance">
+                  <div class="card-body">
+                   <div class="card-img-actions">
+                    <img src="../images/product-5.jpg" class="card-img img-fluid" width="96" height="350" alt="">                                         
+                  </div>
+                 </div>
+                  <div class="card-body bg-light text-center">
+                   <div class="mb-2">                    
+                    <a href="#" class="text-muted" data-abc="true">THE WW CHAIR</a>
+                  </div>
+                    <h3 class="price mb-0 font-weight-semibold">1350<span>$</span></h3>
+                   <div>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                  </div>
+                  <input type="number" class="quantity" value="0" min="0">
+                   <div class="cart-button">
+                      <button onclick ="addToCard(this)" class="cart">
+                        <span>Add to Cart </span>
+                          <i class="fa fa-shopping-basket" aria-hidden="true" ></i>
+                      </button>
+                   </div>
+                  </div>
+                 </div>       
+                </div>
+                <div class="col-md-4 mt-2">
+                 <div class="card elegance">
+                  <div class="card-body">
+                   <div class="card-img-actions">
+                    <img src="../images/product-4.jpg" class="card-img img-fluid" width="96" height="350" alt="">                                         
+                  </div>
+                 </div>
+                  <div class="card-body bg-light text-center">
+                   <div class="mb-2">                    
+                    <a href="#" class="text-muted" data-abc="true">EARING WIRELESS</a>
+                  </div>
+                    <h3 class="price mb-0 font-weight-semibold">750<span>$</span></h3>
+                   <div>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                  </div>
+                  <input type="number" class="quantity" value="0" min="0">
+                   <div class="cart-button">
+                      <button onclick ="addToCard(this)" class="cart">
+                        <span>Add to Cart </span>
+                          <i class="fa fa-shopping-basket" aria-hidden="true" ></i>
+                      </button>
+                   </div>
+                  </div>
+                 </div>       
+                </div>
+                <div class="col-md-4 mt-2">
+                 <div class="card elegance">
+                  <div class="card-body">
+                   <div class="card-img-actions">
+                    <img src="../images/product-3.jpg" class="card-img img-fluid" width="96" height="350" alt="">                                         
+                  </div>
+                 </div>
+                  <div class="card-body bg-light text-center">
+                   <div class="mb-2">                    
+                    <a href="#" class="text-muted" data-abc="true">ALATO CABINET</a>
+                  </div>
+                    <h3 class="price mb-0 font-weight-semibold">2200<span>$</span></h3>
+                   <div>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                  </div>
+                  <input type="number" class="quantity" value="0" min="0">
+                   <div class="cart-button">
+                      <button onclick ="addToCard(this)" class="cart">
+                        <span>Add to Cart </span>
+                          <i class="fa fa-shopping-basket" aria-hidden="true" ></i>
+                      </button>
+                   </div>
+                  </div>
+                 </div>       
+                </div>
+                <div class="col-md-4 mt-2">
+                 <div class="card skin">
+                  <div class="card-body">
+                   <div class="card-img-actions">
+                    <img src="../images/product-2.jpg" class="card-img img-fluid" width="96" height="350" alt="">                                         
+                  </div>
+                 </div>
+                  <div class="card-body bg-light text-center">
+                   <div class="mb-2">                    
+                    <a href="#" class="text-muted" data-abc="true">HAUTEVILLE CHAIR</a>
+                  </div>
+                    <h3 class="price mb-0 font-weight-semibold">1100<span>$</span></h3>
+                   <div>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                  </div>
+                  <input type="number" class="quantity" value="0" min="0">
+                   <div class="cart-button">
+                      <button onclick ="addToCard(this)" class="cart">
+                        <span>Add to Cart </span>
+                          <i class="fa fa-shopping-basket" aria-hidden="true" ></i>
+                      </button>
+                   </div>
+                  </div>
+                 </div>       
+                </div>
+                <div class="col-md-4 mt-2">
+                 <div class="card skin">
+                  <div class="card-body">
+                   <div class="card-img-actions">
+                    <img src="../images/product-1.jpg" class="card-img img-fluid" width="96" height="350" alt="">                                         
+                  </div>
+                 </div>
+                  <div class="card-body bg-light text-center">
+                   <div class="mb-2">                    
+                    <a href="#" class="text-muted" data-abc="true">PAVILION SPEAKER</a>
+                  </div>
+                    <h3 class="price mb-0 font-weight-semibold">900<span>$</span></h3>
+                   <div>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                       <i class="fa fa-star star"></i>
+                  </div>
+                  <input type="number" class="quantity" value="0" min="0">
+                   <div class="cart-button">
+                      <button onclick ="addToCard(this)" class="cart">
+                        <span>Add to Cart </span>
+                          <i class="fa fa-shopping-basket" aria-hidden="true" ></i>
+                      </button>
+                   </div>
+                  </div>
+                 </div>       
+                </div>                                   
+              </div>
+             </div>
+      <!--Section: Products v.3-->
+
+  
+      <!--Pagination-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+
+<!----------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+-------------------------------MY ACCOUNT-----------------------------------------
+------------------------------------------------------------------------------------ 
+------------------------------------------------------------------------------------>
+  
+
+
+
+
+
+ <script>
+
+        let userLink = document.querySelector("#userLink");
+        let signOutLink = document.querySelector("#signOutLink").addEventListener("click",Signout);
+
+        let Name = document.querySelector("#LastName")
+        let email  = document.querySelector("#emailValue")
+        let telephone = document.querySelector("#telephone");
+        let address = document.querySelector("#address")
+  
+        let currentUser = null; 
+
+        /////////////function//////////////////
+
+        function getUsername () {
+          let keepLogedIn = localStorage.getItem("keepLoggedIn");
+          console.log(keepLogedIn)
+          if(keepLogedIn == "yes") {
+            currentUser = JSON.parse(localStorage.getItem("user"))
+          }
+          else {
+            currentUser = JSON.parse(sessionStorage.getItem("user"))
+            console.log(currentUser)
+
+
+          }
+        }
+
+       
+        function Signout (e) {
+          sessionStorage.removeItem("user");
+          localStorage.removeItem("user");
+          localStorage.removeItem("keepLoggedIn");
+          window.location = "home.html"
+
+        }
+
+        window.onload = function () {
+          getUsername() 
+          if(currentUser == null) {
+            // userLink.innerText = "Creat new Account"
+            // userLink.classList.replace("nav-link","btn");
+            // userLink.classList.add("btn-primary")
+            // userLink.href = "register.html"
+
+            // signOutLink.innerText = "Login"
+            // signOutLink.classList.replace("nav-link","btn");
+            // signOutLink.classList.add("btn-success")
+            // signOutLink.href = "login.html"
+          }
+          else {
+            Name.innerText = currentUser.fullname
+            address.innerText = currentUser.address
+            telephone.innerText = currentUser.telephone
+            email.innerText = currentUser.email;
+            // userLink.innerText = currentUser.
+            // userLink.classList.replace("btn", "nav-link");
+            // userLink.classList.add("btn-primary")
+            // userLink.href = "#"
+          
+        
+            // signOutLink.innerText = "Sign Out";
+            // signOutLink.classList.replace("btn", "nav-link");
+            // signOutLink.classList.remove("btn-success");
+            // signOutLink.href = "javascript:Signout()"
+          }
+        }
+
+      
+</script>
+<script src="product.js"></script>
+<script src="../javaScript/logged-in.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
+</body>
+</html>

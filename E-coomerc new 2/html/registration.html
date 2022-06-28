@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Responsive Elite Furniture Website Design Tutorial</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="../css/registration.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header class="header">
+
+    <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Elite Furniture </a>
+
+    <nav class="navbar">
+        <a href="home.html">home</a>
+        <!-- karakteristike -->
+        <a href="#features">features</a> 
+        <!-- proizvod -->
+        <a href="#products">Products</a>
+        <!-- recenzija -->
+        <a href="#promotions">Review</a>
+        <!-- Promotions -->
+        <a href="#review">Promotions</a>
+    </nav>
+</header>
+<!-- Add item -->
+ <div  class="w3-container w3-center w3-animate-bottom" id="aler">
+  <p  style="font-size: 1.9rem ; text-align: center; padding: 16px;">Thank You for registration & you need to log in with your credentials</p>
+  <a href="loggin.html" id="locationLogin" class="btne" >Click to login</a>
+  </div>
+<!-- Quantity item -->
+
+
+
+
+        <div style="margin: 5rem auto; width: 40rem; padding: 10px;">
+           <div class="container" style="line-height: 1.5; font-size: 1.3rem;">
+            <h2 class="mb-3" style="text-align:center; font-size: 2.8rem;">Register</h2>
+            
+            <div class="input-group"> 
+              <input type="text" name="name" id="name" required class="input">
+              <label class="input-label" for="name"><b>Name </label>
+                <ul><li id="error1"></li></ul>
+            </div>
+            <div class="input-group"> 
+              <input type="text" name="lastname" id="lastname" required class="input">
+              <label class="input-label" for="lastname"><b>Last Name</label>
+                <ul><li id="error2"></li></ul>
+            </div>
+             <div class="input-group"> 
+             <input type="text" name="email" id="email" required class="input">
+             <label class="input-label" for="email">Email</label>
+            <ul><li id="error3"></li></ul>
+          </div>
+          <div  class="input-group">
+            <input type="username" name="username" id="username" required class="input">
+            <label class="input-label" for="username">username</label>
+            <ul><li id="error4"></li></ul>
+          </div>
+          <div class="input-group">
+            <input type="password" name="password" id="password" required class="input">
+            <label class="input-label" for="password">Password</label>
+            <ul><li id="error5"></li></ul>
+          </div>
+          <div class="input-group">
+            <input type="number" name="telephone" id="telephone" required class="input">
+            <label class="input-label" for="telephone">Telephone</label>
+            <ul><li id="error6"></li></ul>
+            </div>
+            
+            <div class="input-group">
+              <input type="Address" name="address" id="address" required class="input">
+              <label class="input-label" for="address">Address</label>
+              <ul ><li id="error7"></li></ul>
+          </div>
+            <br>
+            <button class="btne w-100 btn-outline-primary mb-3"  id="sub_btn">Sign Up</button>
+            <a style="color:#3399ff;text-decoration: none; font-size: 1.1rem;" href="loggin.html" class="badge py-1 w-100">Alerady Have An Account</a>
+          </div>
+          </div>
+	<!-- <div  class="text-center">Already have an account? <a href="logged-user.html">Sign in</a></div> -->
+
+ 
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBgfbTqTdlPKzgZ7hPEELUW82hIHK_BoQI",
+          authDomain: "register--login-page.firebaseapp.com",
+          databaseURL: "https://register--login-page-default-rtdb.firebaseio.com",
+          projectId: "register--login-page",
+          storageBucket: "register--login-page.appspot.com",
+          messagingSenderId: "832112139667",
+          appId: "1:832112139667:web:b06aed6b08bcd1d0f7dc66"
+        };
+      
+
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        import {getDatabase, ref, set, child, get}
+               from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js"
+        const db = getDatabase();
+
+
+        ///////////////////listener//////////////777
+        const name = document.querySelector("#name")
+        const lastname = document.querySelector("#lastname")
+        const email = document.querySelector("#email")
+        const username = document.querySelector("#username")
+        const pass = document.querySelector("#password")
+        const telephone = document.querySelector("#telephone");
+        const address = document.querySelector("#address");
+  
+       
+       
+        function valueNone() {
+            name.value = "";
+            lastname.value = "",
+            email.value = "";
+            username.value = "";
+            pass.value = "";
+            telephone.value = "";
+            address.value = "";
+
+        }
+     
+      
+       function falidationAlert() {
+        
+       let displayAlert = document.querySelector("#aler")
+       displayAlert.style.display = "block";
+       
+       }
+
+
+
+
+      let btn_submit = document.querySelector("#sub_btn")
+      btn_submit.addEventListener("click", validationForm)
+      
+    // var Cash = 0;
+    // function updateCash(newCash){
+    // Cash = newCash;
+    // if (Cash === 1) {
+    //     submit.disabled = false;
+    // } else {
+    //     submit.disabled = true;
+    // }
+    // }
+
+   
+
+     function registerUserFirbase() {
+      
+      const dbRef = ref(db)
+      
+      get(child(dbRef, "UsersList/"+ username.value)).then((snapshot) => {
+        if(snapshot.exists()) {
+          alert("Account already Exist")
+        }
+        else {
+          set(ref(db,"UsersList/"+username.value), {
+            name:name.value,
+            lastname:lastname.value,
+            email:email.value,
+            username:username.value,
+            telephone:telephone.value,
+            address:address.value,
+            password:encPassword()
+          })
+          .then (() => {
+            valueNone();
+          })
+          .catch((error) => {
+            alert("error"+error)
+          })
+        } 
+      })
+     }
+     function encPassword () {
+       var password = CryptoJS.AES.encrypt(pass.value, pass.value);
+           return password.toString()
+     }
+
+// (((((())))))
+
+function validationForm() {
+        let name = document.querySelector("#name")
+        let lastname = document.querySelector("#lastname")
+        let email = document.querySelector("#email")
+        let username = document.querySelector("#username")
+        let pass = document.querySelector("#password")
+        let telephone = document.querySelector("#telephone");
+        let address = document.querySelector("#address");
+    
+
+let Name = name.value.trim();
+let Lastname = lastname.value.trim();
+let Email = email.value.trim();
+let Username = username.value.trim();
+let Telephone = telephone.value.trim();
+let Address = address.value.trim();
+let Password = pass.value.trim();
+
+
+let fullNameRegex = /^[a-z,',-]+(\s)[a-z,',-]+$/
+let numberRegex = /^[A-Za-z]+$/;
+let upperCase = /(?=.*[A-Z])/;
+let emailREGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+let lastnameRegex = /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+$/
+
+
+    let passwordNumber = /^(?=.*[0-9])/
+		let letters = /^[A-Za-z]+$/;
+		let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+   
+    let NameError = document.querySelector("#error1");
+    let LastNameError = document.querySelector("#error2");
+    let EmailError = document.querySelector("#error3");
+    let UserNameError = document.querySelector("#error4");
+    let PasswordError = document.querySelector("#error5");
+    let TelephoneError = document.querySelector("#error6");
+    let AddresError = document.querySelector("#error7");
+    
+		if(Name == '')
+		{
+			NameError.innerHTML = "Name is not value!";
+		}
+		else if(!letters.test(Name) || Name.length < 3 || Name.length >= 15 )
+		{
+      NameError.innerText = "Name field required only alphabet characters";
+		}
+    else if(Lastname=='' )
+		{ 
+      NameError.innerText = "";
+			LastNameError.innerText = 'Please enter your user lastname id';
+		}
+		else if (!lastnameRegex.test(Lastname) || Lastname.length < 3 || Lastname.length >= 15)
+		{
+      LastNameError.innerText = 'Invalid lastname';
+		}
+		else if(Email=='')
+		{
+      LastNameError.innerText = ""
+      EmailError.innerText = "Please enter your user email id"
+		}
+		else if (!filter.test(Email))
+		{
+      LastNameError.innerText = ""
+      EmailError.innerText = "Invalid email"
+		}
+		else if(Username=='')
+		{
+      EmailError.innerText = ""
+			UserNameError.innerText = 'Please enter the user name'
+		}
+		else if(numberRegex.test(Username))
+		{
+      EmailError.innerText = ""
+			UserNameError.innerText = "The username field requires an alphabet and a number"
+		}
+		else if(Password =='')
+		{
+      UserNameError.innerText = "";
+			PasswordError.innerText ="Enter Confirm Password";
+		}
+		else if(!upperCase.test(Password) && passwordNumber.test(Password))
+		{ 
+      UserNameError.innerText = "";
+			PasswordError.innerText ='Upper case, Lower case, Special character and Numeric letter are required in Password filed';
+		}
+    else if(Telephone=='')
+		{
+      PasswordError.innerText = "";
+      TelephoneError.innerText = "Telephone not value"
+		}
+		else if(Address == '') {
+      PasswordError.innerText = "";
+      TelephoneError.innerText = "";
+      AddresError.innerText = "Adress not value"
+      alert("Adress not value")
+    }
+  	else 
+		{				       
+      address.innerText = "";
+
+      falidationAlert();
+     registerUserFirbase()
+			   // Redirecting to other page or webste code. 
+			  //  window.location = "http://www.campuslife.co.in"; 
+		}
+	}
+
+
+
+      </script>
+<!-- custom js file link  -->
+
+<script src="registration.js"></script>
+</body>
+</html>

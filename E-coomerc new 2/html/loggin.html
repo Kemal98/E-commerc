@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+     
+    
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/registration.css">
+</head>
+        <!-- <label for="username">User Name</label>
+        <input type="username" name="username" id="username" class="form-control mb-3">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password"class="form-control mb-3">
+        <br>
+        <div class="input-group">
+          <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="customSwitch1"/>
+        <label class="form-check-label" for="customSwitch1"> Remember me </label>
+      </div>
+            </button>
+          </div>
+        <button class="btn  btn-outline-primary mb-3 w-100" id="sub_btn">Sign Up</button>
+        <a href="register.html" class="badge badge-secondary py-1 w-100">Alerady Have An Account</a>
+    </div>
+ -->
+ 
+<header class="header">
+
+  <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Elite Furniture </a>
+
+  <nav class="navbar">
+      <a href="home.html">home</a>
+      <!-- karakteristike -->
+      <a href="#features">features</a> 
+      <!-- proizvod -->
+      <a href="#products">Products</a>
+      <!-- recenzija -->
+      <a href="#promotions">Review</a>
+      <!-- Promotions -->
+      <a href="#review">Promotions</a>
+  </nav>
+</header>
+<!-- <div class="aler">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+<p style="font-size: 1.9rem ; text-align: center; padding: 16px;">User added successfully</p>
+</div> -->
+
+<div style="width: 400px; margin: 5rem auto; width: 40rem; padding: 10px; font-size: 1.3rem;">
+      <div>
+        <h2 style="text-align:center; padding-bottom: 2rem;">Log in</h2>
+        <div class="input-group">
+             <input type="text" name="username" id="username" required class="input">
+              <label class="input-label" for="username">User Name</label>
+              <ul><li id="error1"></li></ul>
+
+        </div>
+        <div class="input-group">
+        <input type="password" name="password" id="password" required class="input">
+        <label class="input-label" for="password">Password</label>
+        <ul><li id="error2"></li></ul>
+
+
+        </div>
+        <br>
+        <div class="input-group">
+          <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="customSwitch1"/>
+        <label class="form-check-label" for="customSwitch1"> Remember me </label>
+  
+         </div>
+          </div>
+        <button id="sub_btn"  class="btn btn-outline-primary mb-3 w-100">Login</button>
+        <a style="color:#3399ff;text-decoration: none; font-size: 1.1rem;" href="registration.html" class="badge py-1 w-100">Don't have an account?</a>
+        </div>
+        </div>
+      </div>
+
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+        // TODO: Add SDKs for Firebase productbs that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBgfbTqTdlPKzgZ7hPEELUW82hIHK_BoQI",
+          authDomain: "register--login-page.firebaseapp.com",
+          databaseURL: "https://register--login-page-default-rtdb.firebaseio.com",
+          projectId: "register--login-page",
+          storageBucket: "register--login-page.appspot.com",
+          messagingSenderId: "832112139667",
+          appId: "1:832112139667:web:b06aed6b08bcd1d0f7dc66"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        import {getDatabase, ref, set, child, get}
+               from "https://www.gstatic.com/firebasejs/9.8.3/firebase-database.js"
+        const db = getDatabase();
+       
+
+        /////////////////////the refrences///////////////////////
+        const username = document.querySelector("#username")
+        const pass = document.querySelector("#password")
+        const submit = document.querySelector(".btn")
+        
+        submit.addEventListener('click', AuthenticateUser)
+        
+        function AuthenticateUser() {
+        const dbRef = ref(db)
+        get(child(dbRef, "UsersList/"+ username.value)).then((snapshot) => {
+        if(snapshot.exists()) {
+           let dbpass = decPasword(snapshot.val().password)
+           if(dbpass == pass.value) {
+            login(snapshot.val());
+            console.log("radi")
+           }
+        }
+        else {
+          let pas = document.querySelector("#password")
+          let usernam = document.querySelector("#username")
+
+          pas.style.color = "red"
+          usernam.style.color = "red";
+        } 
+      })
+     }
+
+
+     //desifriraj pasword 
+     function decPasword (dbpass) {
+        var pass12 = CryptoJS.AES.decrypt(dbpass, pass.value);
+           return pass12.toString(CryptoJS.enc.Utf8)
+     }
+
+     //////////////Login/////////////
+
+     function login(user) {
+        let keepLogedIn = document.querySelector("#customSwitch1").checked;
+        console.log("Dosli smo do usera ")
+
+        if(!keepLogedIn) {
+            sessionStorage.setItem("user",JSON.stringify(user));
+            window.location.href = "logged-in.html";
+        }
+        else {
+            localStorage.setItem("keepLoggedIn","Yes");
+            localStorage.setItem("user",JSON.stringify(user));
+            window.location = "logged-in.html";
+        }
+     }
+
+
+
+
+
+// submit.addEventListener('click', () => {
+//   let nameError = document.querySelector("#error1")
+//   let passwordError = document.querySelector("#error2")
+
+//   const name = document.getElementById('username')
+//   const password = document.getElementById('password')
+//   let passwordNumber = /^(?=.*[0-9])/
+//   let upperCase = /(?=.*[A-Z])/;
+
+
+//   if(name == '')
+// 		{
+// 			nameError.innerText = "Name is not value!";
+// 		}
+//     else if(password =='')
+// 		{
+//       nameError.innerText = "";
+// 			passwordError.innerText ="Enter Confirm Password";
+// 		}
+// 		else if(!upperCase.test(password) && passwordNumber.test(password))
+// 		{ 
+//       nameError.innerText = "";
+// 			passwordError.innerText ='Upper case, Lower case, Special character and Numeric letter are required in Password filed';
+// 		}
+//     else {
+//       passwordError.innerText = "";
+//       AuthenticateUser()
+//     }
+
+  
+// })
+      </script>
+</body>
+</html>

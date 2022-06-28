@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Responsive Elite Furniture Website Design Tutorial</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="../css/home.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+    
+<!-- header section starts  -->
+
+<header class="header">
+
+    <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Elite Furniture </a>
+
+    <nav class="navbar">
+        <a href="#home">home</a>
+        <!-- karakteristike -->
+        <a href="#features">features</a> 
+        <!-- proizvod -->
+        <!-- <a href="#products">Products</a> -->
+        <!-- recenzija -->
+        <a href="#promotions">Review</a>
+        <!-- Promotions -->
+        <a href="#review">Promotions</a>
+    </nav>
+
+    <div class="icons">
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <div class="fas fa-user" id="login-btn"></div>
+    </div>
+
+
+    <form class="login-form">
+
+        <h3>login now</h3>
+        <!-- <input id="username" type="username" placeholder="username">
+        <input id="password" type="password" placeholder="your password">
+        <p>forget your password <a href="#">click here</a></p> -->
+        <p>Don't have an account? <a id="crateUser" href="registration.html">Create now</a></p>
+        <p>I already have an account !  <a id="logginUser" href="loggin.html">Logged-user</a></p>
+         <button class="mainBtn" id="btn"> How to shop ?</button>
+        <!-- <button  onclick="myFunction()" class="btne">click</button> -->
+        <!-- <a href=""></a>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="customSwitch1"/>
+            <label class="form-check-label" for="customSwitch1"> Remember me </label>
+          </div> -->
+        <!-- <button id="btn_submit" onclick="AuthenticateUser()" >click</button> -->
+    </form>
+</header>
+    <!-- Modal pop up -->
+    <div  id="howToShop" class="w3-container w3-center w3-animate-top">
+        <!-- <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> -->
+      <p style="font-size: 1.4rem ; text-align: center; padding: 13px;">Product added to cart </p>
+      </div>
+    
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+<div class="main">
+<section class="home" id="home">
+    <div class="content">
+        <h3>New <span>collection </span> 2020</h3>
+        <p id="content-p">As part of our sales network, we offer you complete solutions and high-quality products in the field of interior design. We cooperate with most world-renowned furniture manufacturers, and we are able to help you regardless of the level of complexity of your projects. For more information, please select one of the following product categories.</p>
+       <div>
+        <button id="sub_btn"  class="btn-outline-primary mb-3 w-30">Shop</button>
+       </div>
+    </div>
+</section>
+
+<!-- home section ends -->
+
+<!-- features section starts  -->
+
+<section class="features" id="features">
+
+    <h1 class="heading"> our <span>features</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="../images/credit-card.jpg" alt="">
+            <h3>CREDIT CARD</h3>
+            <p>We offer a 10% discount on all credit cards!</p>
+        </div>
+
+        <div class="box">
+            <img src="../images/free-shipping-delivery-service-logo-badge-vector.jpg" alt="">
+            <h3>FREE DELIVERY</h3>
+            <p>Free shipping to any city in the country!!</p>
+        </div>
+
+        <div class="box">
+            <img src="../images/save mony.png" alt="">
+            <h3>SAVE MONEY</h3>
+            <p>See why you can save money with us!</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- features section ends -->
+
+<!-- products section starts  -->
+
+<section class="products" id="products">
+
+    <h1 class="heading"> Our <span>products</span> </h1>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <div class="product-box">
+                
+                <img src="../images/product-1.jpg" alt="">
+                <h3 id="name">HAUTEVILLE CHAIR</h3>
+                <input type="number" name="quantity" value="0" min="0">
+                <div class="price">350$</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Log in to access our online store!</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <div class="product-box">
+                <img src="../images/product-2.jpg" alt="">
+                <h3 id="name">PAVILION SPEAKER</h3>
+                <input  type="number" name="quantity" value="0" min="0">
+                <div class="price">350$</div>
+                    <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Log in to access our online store!</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <div class="product-box">
+                <img src="../images/product-3.jpg" alt="">
+                <h3 id="name">LIGOMANCER</h3>
+                <input  type="number" name="quantity" value="0" min="0">
+                <div class="price">350$</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Log in to access our online store!</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <div class="product-box">
+                <img src="../images/product-4.jpg" alt="">
+                <h3 id="name">ALATO CABINET</h3>
+                <input  type="number" name="quantity" value="0" min="0">
+                <div class="price">350$</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Log in to access our online store!</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <div class="product-box">
+               
+                <img src="../images/product-5.jpg" alt="">
+                <h3 id="name">EARING WIRELESS</h3>
+                <input  type="number" name="quantity" value="0" min="0">
+                <div class="price">350$</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            
+                <p>Log in to access our online store!</p>
+            </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <div class="product-box">
+                <img src="../images/product-6.jpg" alt="">
+                <h3 id="name">SCULPTURAL</h3>
+                <input  type="number" name="quantity" value="0" min="0">
+                <div class="price">350$</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Log in to access our online store!</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <div class="product-box">
+                
+                <img src="../images/product-7.jpg" alt="">
+                <h3 id="name">THE WW CHAIR</h3>
+                <input  type="number" name="quantity" value="0" min="0">
+                <div class="price">350$</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Log in to access our online store!</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <div class="product-box">>
+                <img id="image" src="../images/product-8.jpg" alt="">
+                <h3 id="name">HIMITSU MONEY BOX</h3>
+                <input  type="number" name="quantity" value="0" min="0">
+                <div class="price">350$</div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Log in to access our online store!</p>
+            </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+<!-- products section ends -->
+
+<!-- categories section starts  -->
+
+<section class="categories" id="promotions">
+
+    <!-- <div class="box-container"> -->
+            <!-- title -->
+            <div class="title">
+                  <h1 class="heading"> HAPPY <span>CLIENTS</span> </h1>
+                <div class="underline"></div>
+              </div>
+              <!-- review -->
+              <article class="review">
+                <div class="img-container">
+                  <img src="../images/person1.jpg" id="person-img" alt="" />
+                </div>
+                <h4 id="author">sara jones</h4>
+                <p id="job">designer</p>
+                <p id="info">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
+                  asperiores debitis incidunt, eius earum ipsam cupiditate libero?
+                  Iste, doloremque nihil?
+                </p>
+                <!-- prev next buttons-->
+                <div class="button-container">
+                  <button  class="btne prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="btne next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+                <!-- random button -->
+                <button id="sub_btn"  class="btn btn-outline-primary mb-3 w-30">Random</button>
+            </article>
+</section>
+
+<!-- categories section ends -->
+
+<!-- review section starts  -->
+
+<section class="review" id="review">
+
+    <h1 class="heading"> News and <span>promotions's</span> </h1>
+
+    <div class="swiper review-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="../images/salone.jpg" alt="">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
+                <h3>23.02.2023</h3>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="../images/salone.jpg" alt="">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
+                <h3>10.12.2022</h3>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="../images/salone.jpg" alt="">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
+                <h3>11.05.2023</h3>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="../images/salone.jpg" alt="">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde sunt fugiat dolore ipsum id est maxime ad tempore quasi tenetur.</p>
+                <h3>01.05.2023</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<section>
+<main>
+    <!-- Start DEMO HTML (Use the following code into your project)-->
+  <h2 class="heading">Our best selling <span>product</span></h2>   
+  <p style="text-align: center; font-size: 2rem;">Roll over image to zoom in.</p> 
+<div id="img-zoomer-box">
+ <img src="../images/img_bg_1.jpg" id="img-1" alt="Zoom Image on Mouseover"/>
+ <div id="img-2"></div>
+</div>  
+    <!-- END EDMO HTML (Happy Coding!)-->
+</main>
+</section>
+
+
+<!-- review section ends -->
+<!-- footer section starts  -->
+
+</div>
+
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3> Elite Furniture <i class="fas fa-shopping-basket"></i> </h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam, saepe.</p>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+        </div>
+       
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +123-456-7890 </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +111-222-3333 </a>
+            <a href="#" class="links"> <i class="fas fa-envelope"></i> eliteurniture@gmail.com </a>
+            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> America - 400104 </a>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> home </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> features </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> products </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i>review</a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> promotions </a>
+        </div>
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <input type="email" placeholder="your email" class="email">
+            <input type="submit" value="subscribe" class="btn">
+            <img src="../images/payment.png" class="payment-img" alt="">
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span> K.M </span> | all rights reserved </div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script src="../javaScript/home.js"></script>
+
+
+
+<!-- custom js file link  -->
+</body>
+</html>
